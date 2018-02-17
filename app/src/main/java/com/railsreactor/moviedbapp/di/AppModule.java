@@ -8,6 +8,7 @@ import com.railsreactor.moviedbapp.domain.executor.PostExecutionThread;
 import com.railsreactor.moviedbapp.domain.executor.TaskExecutor;
 import com.railsreactor.moviedbapp.domain.executor.UIThread;
 import com.railsreactor.moviedbapp.domain.executor.UseCaseExecutor;
+import com.railsreactor.moviedbapp.presentation.main.MainActivityViewModel;
 
 import javax.inject.Singleton;
 
@@ -43,6 +44,11 @@ public class AppModule {
     @Singleton
     static PostExecutionThread providePostExecutionThread(UIThread uiThread) {
         return uiThread;
+    }
+
+    @Provides
+    Class<MainActivityViewModel> provideMainActivityViewModelClass() {
+        return MainActivityViewModel.class;
     }
 
 }
