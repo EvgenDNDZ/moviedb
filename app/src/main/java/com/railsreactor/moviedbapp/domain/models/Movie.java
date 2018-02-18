@@ -1,5 +1,8 @@
 package com.railsreactor.moviedbapp.domain.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -8,7 +11,7 @@ import java.util.List;
  * @author Evgeny Kubay on 2/17/18.
  */
 
-public class Movie {
+public class Movie implements Parcelable{
     @SerializedName("overview") private String overview;
 
     @SerializedName("original_language") private String originalLanguage;
@@ -36,6 +39,34 @@ public class Movie {
     @SerializedName("adult") private boolean adult;
 
     @SerializedName("vote_count") private int voteCount;
+
+    protected Movie(Parcel in) {
+        overview = in.readString();
+        originalLanguage = in.readString();
+        originalTitle = in.readString();
+        video = in.readByte() != 0;
+        title = in.readString();
+        posterPath = in.readString();
+        backdropPath = in.readString();
+        releaseDate = in.readString();
+        popularity = in.readDouble();
+        voteAverage = in.readDouble();
+        id = in.readInt();
+        adult = in.readByte() != 0;
+        voteCount = in.readInt();
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 
     public void setOverview(String overview){
         this.overview = overview;
@@ -147,5 +178,27 @@ public class Movie {
 
     public int getVoteCount(){
         return voteCount;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(overview);
+        parcel.writeString(originalLanguage);
+        parcel.writeString(originalTitle);
+        parcel.writeByte((byte) (video ? 1 : 0));
+        parcel.writeString(title);
+        parcel.writeString(posterPath);
+        parcel.writeString(backdropPath);
+        parcel.writeString(releaseDate);
+        parcel.writeDouble(popularity);
+        parcel.writeDouble(voteAverage);
+        parcel.writeInt(id);
+        parcel.writeByte((byte) (adult ? 1 : 0));
+        parcel.writeInt(voteCount);
     }
 }

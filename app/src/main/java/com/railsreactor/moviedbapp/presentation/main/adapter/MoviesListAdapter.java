@@ -12,13 +12,19 @@ import com.railsreactor.moviedbapp.presentation.base.adapter.DataBoundListAdapte
 
 import java.util.Objects;
 
+import javax.inject.Inject;
+
 /**
  * @author Evgeny Kubay on 2/17/18.
  */
 
-public class MovieListAdapter extends DataBoundListAdapter<Movie, MoviesListItemBinding> {
+public class MoviesListAdapter extends DataBoundListAdapter<Movie, MoviesListItemBinding> {
 
     private MovieItemClickCallback callback;
+
+    @Inject
+    public MoviesListAdapter() {
+    }
 
     public void init(MovieItemClickCallback callback){
         this.callback = callback;
