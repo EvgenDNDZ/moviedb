@@ -6,8 +6,6 @@ import com.railsreactor.moviedbapp.domain.executor.UseCaseExecutor;
 import com.railsreactor.moviedbapp.domain.interactor.base.SingleUseCase;
 import com.railsreactor.moviedbapp.domain.repository.MovieRepository;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import io.reactivex.Single;
@@ -16,7 +14,7 @@ import io.reactivex.Single;
  * @Author evgen on 18.02.2018.
  */
 
-public class GetMoviesListUseCase extends SingleUseCase<List<MoviesListResponse>, Void> {
+public class GetMoviesListUseCase extends SingleUseCase<MoviesListResponse,Integer> {
 
     private final MovieRepository movieRepository;
 
@@ -28,7 +26,7 @@ public class GetMoviesListUseCase extends SingleUseCase<List<MoviesListResponse>
 
 
     @Override
-    protected Single<List<MoviesListResponse>> buildSingle(Void params) {
-        return null;
+    protected Single<MoviesListResponse> buildSingle(Integer params) {
+        return this.movieRepository.getMoviesListByPage(params);
     }
 }

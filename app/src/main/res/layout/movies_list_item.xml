@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.railsreactor.moviedbapp.domain.models.Movie"/>
+
+        <import type="android.support.v7.widget.LinearLayoutManager"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            style="@style/MovieList.MoviesItemInfoHolder"
+            android:id="@+id/cv">
+
+            <LinearLayout
+                style="@style/VerticalLinearLayout"
+                android:padding="@dimen/movies_item_info_container_padding">
+
+                <LinearLayout
+                    style="@style/HorizontalLinearLayout"
+                    android:gravity="bottom"
+                    android:paddingStart="@dimen/default_padding">
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

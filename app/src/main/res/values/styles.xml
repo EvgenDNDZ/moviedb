@@ -8,4 +8,35 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="WrappedView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="FullWidthView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="FullScreenView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="VerticalLinearLayout" parent="FullWidthView">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="VerticalLinearLayout.FullScreen" parent="FullScreenView">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="HorizontalLinearLayout" parent="FullWidthView">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="HorizontalLinearLayout.FullScreen" parent="FullScreenView">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
 </resources>

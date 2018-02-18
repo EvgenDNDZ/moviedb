@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="WrappedView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="MovieList">
     </style>
 
-    <style name="FullWidthView">
+    <style name="MovieList.MoviesItemInfoHolder" parent="CardView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-    </style>
+        <item name="cardCornerRadius">@dimen/movies_item_info_container_conner_radius</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="android:padding">@dimen/movies_item_info_container_padding</item>
+        <item name="android:layout_margin">@dimen/movies_item_info_container_margin</item>
 
-    <style name="FullScreenView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
-
-    <style name="VerticalLinearLayout" parent="FullWidthView">
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="VerticalLinearLayout.FullScreen" parent="FullScreenView">
-        <item name="android:orientation">vertical</item>
     </style>
 
 </resources>
