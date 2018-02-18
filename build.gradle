@@ -19,11 +19,14 @@ ext.arch_version = "1.0.0"
 ext.support_version = "26.1.0"
 ext.support_version_v4 = "26.1.0"
 ext.constr_version = "1.0.2"
-ext.dagger_version = "2.11"
+ext.dagger_version = "2.14.1"
 ext.timber_version = "4.5.1"
 ext.retrofit_version = "2.3.0"
 ext.glide_version = "3.7.0"
 ext.okhttpVersion = '3.8.1'
+ext.gsonVersion = '2.8.2'
+ext.rxJavaVersion = '2.1.8'
+ext.rxAndroidVersion = '2.0.1'
 
 allprojects {
     repositories {
