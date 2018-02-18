@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="vm"
-            type="com.railsreactor.moviedbapp.presentation.main.MainActivityViewModel" />
+            type="com.railsreactor.moviedbapp.presentation.details.MoviesDetailsActivityViewModel" />
         <import type="android.support.v7.widget.LinearLayoutManager"/>
     </data>
 
@@ -14,25 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            style="@style/FullScreenView"
+        <LinearLayout
+            style="@style/VerticalLinearLayout.FullScreen"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_movies_list"
-                style="@style/FullWidthView"
-                app:bindAdapter="@{vm.moviesListAdapter}"
-                app:bindOrientation="@{-1}"/>
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:viewVisibility="@{vm.isUpdating}"
-                android:layout_gravity="bottom|center_horizontal"/>
-
-
-        </FrameLayout>
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

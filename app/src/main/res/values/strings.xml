@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MovieDBApp</string>
 
+    <string name="title_upcoming_movies">Upcoming Movies</string>
+    <string name="title_movies_details">Details Info</string>
+
     <!--Eror-->
     <string name="unknown_error">Unknown error</string>
     <string name="retry">Retry</string>

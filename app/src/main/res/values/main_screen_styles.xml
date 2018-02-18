@@ -14,4 +14,17 @@
 
     </style>
 
+    <style name="MovieList.MoviesItemImage">
+        <item name="android:layout_width">@dimen/poster_thumb_width</item>
+        <item name="android:layout_height">@dimen/poster_thumb_height</item>
+    </style>
+
+    <style name="MovieList.MoviesItemTitle" parent="WrappedView">
+        <item name="android:textSize">@dimen/text_size_big</item>
+    </style>
+
+    <style name="MovieList.MoviesItemAdditionalInfo" parent="WrappedView">
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
 </resources>

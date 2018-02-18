@@ -1,5 +1,6 @@
 package com.railsreactor.moviedbapp.presentation.base;
 
+import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.ViewModel;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -10,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * @author Evgeny Kubay on 2/17/18.
  */
 
-public abstract class BaseActivityViewModel extends ViewModel {
+public abstract class BaseActivityViewModel extends ViewModel implements LifecycleObserver {
 
     protected final CompositeDisposable nitificationCompositeDisposable = new CompositeDisposable();
     protected final CompositeDisposable eventCompositeDisposable = new CompositeDisposable();

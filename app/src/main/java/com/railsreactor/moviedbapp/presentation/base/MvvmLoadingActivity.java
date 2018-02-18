@@ -15,10 +15,9 @@ public class MvvmLoadingActivity<B extends ViewDataBinding, V extends BaseLoadin
 
     protected SnackbarErrorViewer snackbarErrorViewer;
 
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         setupErrorView();
         if (savedInstanceState == null) {
             this.viewModel.reloadData();

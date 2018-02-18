@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorRed">@android:color/holo_red_light</color>
+    <color name="сolorGold">#FFD700</color>
 </resources>

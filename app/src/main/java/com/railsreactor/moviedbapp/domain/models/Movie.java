@@ -1,9 +1,13 @@
 package com.railsreactor.moviedbapp.domain.models;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import com.google.gson.annotations.SerializedName;
+import com.railsreactor.moviedbapp.BuildConfig;
 
 import java.util.List;
 
@@ -11,7 +15,8 @@ import java.util.List;
  * @author Evgeny Kubay on 2/17/18.
  */
 
-public class Movie implements Parcelable{
+public class Movie extends BaseObservable implements Parcelable{
+
     @SerializedName("overview") private String overview;
 
     @SerializedName("original_language") private String originalLanguage;
@@ -178,6 +183,16 @@ public class Movie implements Parcelable{
 
     public int getVoteCount(){
         return voteCount;
+    }
+
+    @Bindable
+    public String getThumbnailImage(){
+        return String.format("%s%s", BuildConfig.BASE_URL_THUMBNAIL_IMG, getPosterPath());
+    }
+
+    @Bindable
+    public String getCombinedTitle(){
+        return !TextUtils.equals(getTitle(), getOriginalTitle()) ? String.format("%s(%s)", getTitle(), getOriginalTitle()) : getTitle();
     }
 
     @Override

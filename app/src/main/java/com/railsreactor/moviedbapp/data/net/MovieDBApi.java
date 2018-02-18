@@ -4,6 +4,7 @@ import com.railsreactor.moviedbapp.data.net.response.MoviesListResponse;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -18,4 +19,6 @@ public interface MovieDBApi {
             @Query("language") String language,
             @Query("page") int pageIndex
     );
+
+
 }

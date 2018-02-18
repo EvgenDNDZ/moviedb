@@ -56,6 +56,23 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
         notifyDataSetChanged();
     }
 
+
+    public void addItems(List<T> newitems){
+        if (newitems != null) {
+            if(getItemCount() > 0){
+                for ( T item : newitems) {
+                    addItem(item);
+                }
+            }else{
+                replace(newitems);
+            }
+        }
+    }
+    public void addItem(T item) {
+        items.add(item);
+        notifyItemInserted(items.size() - 1);
+    }
+
     @SuppressLint("StaticFieldLeak")
     @MainThread
     public void replace(List<T> update) {

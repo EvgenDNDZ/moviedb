@@ -2,6 +2,7 @@ package com.railsreactor.moviedbapp.presentation.main;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.OnLifecycleEvent;
+import android.databinding.ObservableBoolean;
 import android.os.Bundle;
 
 import com.railsreactor.moviedbapp.data.exeptions.ErrorMessageFactory;
@@ -24,8 +25,11 @@ public class MainActivityViewModel extends BaseLoadingActivityViewModel implemen
 
     @Inject MoviesListAdapter moviesListAdapter;
     @Inject GetMoviesListUseCase getMoviesListUseCase;
-    private int currentPage = 0;
+    public int currentPage = 0;
+    public int totalPages = 0;
+    public boolean isLastPage = false;
     AppNavigator appNavigator;
+    private final ObservableBoolean isUpdating = new ObservableBoolean();
 
     @Inject
     public MainActivityViewModel(ErrorMessageFactory errorMessageFactory) {
@@ -42,12 +46,27 @@ public class MainActivityViewModel extends BaseLoadingActivityViewModel implemen
 
     @Override
     public void reloadData() {
-        this.getMoviesListUseCase.execute(++currentPage,
+        currentPage = 0;
+        startLoading(this::updateMoviesList, true);
+    }
+
+    public void updateMoviesList(){
+        updateMoviesListAsync(++currentPage);
+    }
+    private void updateMoviesListAsync(int pageIndex){
+        this.getMoviesListUseCase.execute(pageIndex,
                 moviesListResponses -> {
-                    getMoviesListAdapter().replace(moviesListResponses.getResults());
+                    getIsUpdating().set(false);
+                    getMoviesListAdapter().addItems(moviesListResponses.getResults());
+                    this.totalPages = moviesListResponses.getTotalPages();
+                    this.isLastPage = this.currentPage == moviesListResponses.getTotalPages();
+                    onCompleteLoading();
                 },
                 this::onFailLoading);
+    }
 
+    public ObservableBoolean getIsUpdating() {
+        return isUpdating;
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)

@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.railsreactor.moviedbapp.presentation.base.MovieDBAppViewModelFactory;
+import com.railsreactor.moviedbapp.presentation.details.MoviesDetailsActivityViewModel;
 import com.railsreactor.moviedbapp.presentation.main.MainActivityViewModel;
 
 import dagger.Binds;
@@ -18,11 +19,16 @@ import dagger.multibindings.IntoMap;
 public abstract class ViewModelModule {
 
     @Binds
-    abstract ViewModelProvider.Factory bindViewModelFactory(MovieDBAppViewModelFactory appViewModelFactory);
-
-    @Binds
     @IntoMap
     @ViewModelKey(MainActivityViewModel.class)
     abstract ViewModel bindMainActivityViewModel(MainActivityViewModel mainActivityViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MoviesDetailsActivityViewModel.class)
+    abstract ViewModel bindMoviesDetailsActivityViewModel(MoviesDetailsActivityViewModel moviesDetailsActivityViewModel);
+
+    @Binds
+    abstract ViewModelProvider.Factory bindViewModelFactory(MovieDBAppViewModelFactory appViewModelFactory);
 
 }

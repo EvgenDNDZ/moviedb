@@ -2,6 +2,7 @@ package com.railsreactor.moviedbapp.presentation.base;
 
 import android.os.Bundle;
 
+import com.railsreactor.moviedbapp.presentation.details.MoviesDetailsActivity;
 import com.railsreactor.moviedbapp.presentation.main.MainActivity;
 
 import javax.inject.Inject;
@@ -27,5 +28,6 @@ public class AppNavigator {
     }
 
     public void navigateToMovieDetails(Bundle args) {
+        this.activityNavigator.startActivity(MoviesDetailsActivity.class, args);
     }
 }

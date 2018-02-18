@@ -9,6 +9,7 @@
             type="com.railsreactor.moviedbapp.domain.models.Movie"/>
 
         <import type="android.support.v7.widget.LinearLayoutManager"/>
+        <import type="com.railsreactor.moviedbapp.utils.DateUtils"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -20,14 +21,61 @@
             android:id="@+id/cv">
 
             <LinearLayout
-                style="@style/VerticalLinearLayout"
+                style="@style/HorizontalLinearLayout"
                 android:padding="@dimen/movies_item_info_container_padding">
 
-                <LinearLayout
-                    style="@style/HorizontalLinearLayout"
-                    android:gravity="bottom"
-                    android:paddingStart="@dimen/default_padding">
+                <android.support.v7.widget.AppCompatImageView
+                    style="@style/MovieList.MoviesItemImage"
+                    app:imageUrl="@{model.thumbnailImage}"/>
 
+                <LinearLayout
+                    style="@style/VerticalLinearLayout.FullScreen"
+                    android:padding="@dimen/default_padding_x2"
+                    android:layout_marginStart="@dimen/default_padding"
+                    android:gravity="center_vertical">
+                    
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/MovieList.MoviesItemTitle"
+                        android:text="@{model.combinedTitle}"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/MovieList.MoviesItemAdditionalInfo"
+                        app:date="@{model.releaseDate}"
+                        app:pattern="@{DateUtils.dateWithMonthName}"/>
+
+                    <LinearLayout
+                        style="@style/HorizontalLinearLayout"
+                        android:gravity="center_vertical">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_show_chart_black_24dp"
+                            app:tint="@color/сolorGold"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            style="@style/MovieList.MoviesItemAdditionalInfo"
+                            android:layout_marginStart="@dimen/default_padding"
+                            android:text='@{String.format("%.2f", model.popularity)}'/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/HorizontalLinearLayout"
+                        android:gravity="center_vertical">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_thumbs_up_down_black_24dp"
+                            app:tint="@color/сolorGold"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            style="@style/MovieList.MoviesItemAdditionalInfo"
+                            android:layout_marginStart="@dimen/default_padding"
+                            android:text="@{String.valueOf(model.voteCount)}"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

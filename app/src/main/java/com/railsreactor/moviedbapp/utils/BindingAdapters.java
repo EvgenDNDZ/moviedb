@@ -4,7 +4,9 @@ import android.databinding.BindingAdapter;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -26,7 +28,8 @@ public class BindingAdapters {
     public static void loadImage(AppCompatImageView imageView, String img) {
         Glide.with(imageView.getContext())
                 .load(img)
-//                .fitCenter()
+                .centerCrop()
+                .crossFade()
                 .placeholder(R.drawable.progress_animation_with_padding)
                 .error(R.drawable.placeholder_image_error)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -35,8 +38,20 @@ public class BindingAdapters {
 
     @BindingAdapter(value = {"bindAdapter", "bindOrientation"})
     public static void bindAdapter(RecyclerView view, DataBoundListAdapter adapter, int orientation) {
-        view.setLayoutManager(new LinearLayoutManager(view.getContext(), orientation, false));
+        if (orientation != -1) {
+            view.setLayoutManager(new LinearLayoutManager(view.getContext(), orientation, false));
+        }
         view.setAdapter(adapter);
+    }
+
+    @BindingAdapter(value = {"date", "pattern"})
+    public static void setDate(TextView view, String date, String pattern) {
+
+        if (!TextUtils.isEmpty(date)) {
+            view.setText(DateUtils.getDateAsString(DateUtils.getDateFromString(date,DateUtils.fullFormat), pattern));
+        } else {
+            view.setVisibility(View.GONE);
+        }
     }
 
 }

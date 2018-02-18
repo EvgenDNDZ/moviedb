@@ -12,6 +12,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", '"http://api.themoviedb.org/3/"'
         buildConfigField "String", "THEMOVIEDB_API_KEY", '"d84eed920d17ea08fe8bc112a2dbd1f6"'
+        buildConfigField "String", "BASE_URL_THUMBNAIL_IMG", '"https://image.tmdb.org/t/p/w150"'
     }
     dataBinding {
         enabled = true
@@ -31,6 +32,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -44,11 +46,11 @@ dependencies {
     implementation "android.arch.lifecycle:runtime:$arch_version"
     implementation "android.arch.lifecycle:extensions:$arch_version"
     implementation 'android.arch.paging:runtime:1.0.0-alpha3'
-    implementation ("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
+    implementation("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
     implementation("io.reactivex.rxjava2:rxandroid:$rxAndroidVersion") {
         exclude module: 'rxjava'
     }
-    implementation ("com.google.code.gson:gson:$gsonVersion")
+    implementation("com.google.code.gson:gson:$gsonVersion")
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion") {
         exclude module: 'okhttp'
@@ -60,7 +62,7 @@ dependencies {
         exclude module: 'retrofit'
         exclude module: 'gson'
     }
-    implementation ("com.squareup.retrofit2:adapter-rxjava2:$retrofit_version") {
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofit_version") {
         exclude module: 'retrofit'
         exclude module: 'rxjava'
     }
