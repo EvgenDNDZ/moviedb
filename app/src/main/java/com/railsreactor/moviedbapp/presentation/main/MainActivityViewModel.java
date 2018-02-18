@@ -1,6 +1,7 @@
 package com.railsreactor.moviedbapp.presentation.main;
 
 import com.railsreactor.moviedbapp.data.exeptions.ErrorMessageFactory;
+import com.railsreactor.moviedbapp.domain.interactor.GetMoviesListUseCase;
 import com.railsreactor.moviedbapp.presentation.base.BaseLoadingActivityViewModel;
 
 import javax.inject.Inject;
@@ -10,6 +11,8 @@ import javax.inject.Inject;
  */
 
 public class MainActivityViewModel extends BaseLoadingActivityViewModel {
+
+    @Inject GetMoviesListUseCase getMoviesListUseCase;
 
     @Inject
     public MainActivityViewModel(ErrorMessageFactory errorMessageFactory) {
