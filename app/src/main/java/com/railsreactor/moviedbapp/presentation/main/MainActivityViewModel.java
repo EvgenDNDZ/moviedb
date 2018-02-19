@@ -84,6 +84,14 @@ public class MainActivityViewModel extends BaseLoadingActivityViewModel implemen
         this.getMoviesListUseCase.dispose();
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    void onResume() {
+        Timber.d("Observer", ": onResume");
+        if(currentPage<1){
+            reloadData();
+        }
+    }
+
     @Override
     public void onMovieClick(Movie movie) {
         Bundle args = new Bundle();
