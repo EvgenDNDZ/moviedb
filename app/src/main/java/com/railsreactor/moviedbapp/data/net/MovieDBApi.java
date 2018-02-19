@@ -1,6 +1,7 @@
 package com.railsreactor.moviedbapp.data.net;
 
 import com.railsreactor.moviedbapp.data.net.response.MoviesListResponse;
+import com.railsreactor.moviedbapp.domain.models.MovieDetails;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
@@ -20,5 +21,8 @@ public interface MovieDBApi {
             @Query("page") int pageIndex
     );
 
-
+    @GET("movie/{movie_id}")
+    Single<MovieDetails> getMovieDetailsById(@Path("movie_id") int id,
+                                             @Query("api_key") String apiKey,
+                                             @Query("language") String language);
 }

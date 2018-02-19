@@ -3,7 +3,6 @@ package com.railsreactor.moviedbapp.domain.models;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.text.TextUtils;
 
 import com.google.gson.annotations.SerializedName;
@@ -15,7 +14,7 @@ import java.util.List;
  * @author Evgeny Kubay on 2/17/18.
  */
 
-public class Movie extends BaseObservable implements Parcelable{
+public class Movie extends BaseObservable{
 
     @SerializedName("overview") private String overview;
 
@@ -60,18 +59,6 @@ public class Movie extends BaseObservable implements Parcelable{
         adult = in.readByte() != 0;
         voteCount = in.readInt();
     }
-
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
-        @Override
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
-        }
-
-        @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
-        }
-    };
 
     public void setOverview(String overview){
         this.overview = overview;
@@ -193,27 +180,5 @@ public class Movie extends BaseObservable implements Parcelable{
     @Bindable
     public String getCombinedTitle(){
         return !TextUtils.equals(getTitle(), getOriginalTitle()) ? String.format("%s(%s)", getTitle(), getOriginalTitle()) : getTitle();
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(overview);
-        parcel.writeString(originalLanguage);
-        parcel.writeString(originalTitle);
-        parcel.writeByte((byte) (video ? 1 : 0));
-        parcel.writeString(title);
-        parcel.writeString(posterPath);
-        parcel.writeString(backdropPath);
-        parcel.writeString(releaseDate);
-        parcel.writeDouble(popularity);
-        parcel.writeDouble(voteAverage);
-        parcel.writeInt(id);
-        parcel.writeByte((byte) (adult ? 1 : 0));
-        parcel.writeInt(voteCount);
     }
 }

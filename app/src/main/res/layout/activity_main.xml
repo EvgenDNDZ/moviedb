@@ -11,13 +11,10 @@
     </data>
 
     <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        style="@style/FullScreenView">
 
         <FrameLayout
-            style="@style/FullScreenView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            style="@style/FullScreenView">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_movies_list"
@@ -26,8 +23,7 @@
                 app:bindOrientation="@{-1}"/>
 
             <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WrappedView"
                 app:viewVisibility="@{vm.isUpdating}"
                 android:layout_gravity="bottom|center_horizontal"/>
 
@@ -35,16 +31,14 @@
         </FrameLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/FullScreenView"
             android:background="@android:color/transparent"
             android:gravity="center"
             app:viewVisibility="@{vm.loading}"
             >
 
             <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/WrappedView" />
 
         </RelativeLayout>
 

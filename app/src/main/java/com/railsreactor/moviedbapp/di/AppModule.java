@@ -11,6 +11,8 @@ import com.railsreactor.moviedbapp.domain.executor.UseCaseExecutor;
 import com.railsreactor.moviedbapp.presentation.details.MoviesDetailsActivityViewModel;
 import com.railsreactor.moviedbapp.presentation.main.MainActivityViewModel;
 
+import java.util.Locale;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -39,6 +41,12 @@ public class AppModule {
     @Singleton
     static UseCaseExecutor provideUseCaseExecutor(TaskExecutor taskExecutor) {
         return taskExecutor;
+    }
+
+    @Provides
+    @Singleton
+    static Locale provideLocale() {
+        return Locale.getDefault();
     }
 
     @Provides

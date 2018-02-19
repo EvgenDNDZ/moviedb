@@ -10,7 +10,6 @@ import com.railsreactor.moviedbapp.domain.interactor.GetMoviesListUseCase;
 import com.railsreactor.moviedbapp.domain.models.Movie;
 import com.railsreactor.moviedbapp.presentation.base.AppNavigator;
 import com.railsreactor.moviedbapp.presentation.base.BaseLoadingActivityViewModel;
-import com.railsreactor.moviedbapp.presentation.base.Navigator;
 import com.railsreactor.moviedbapp.presentation.main.adapter.MoviesListAdapter;
 
 import javax.inject.Inject;
@@ -84,7 +83,7 @@ public class MainActivityViewModel extends BaseLoadingActivityViewModel implemen
     @Override
     public void onMovieClick(Movie movie) {
         Bundle args = new Bundle();
-        args.putParcelable(Navigator.EXTRA_ARG, movie);
+        args.putInt(Movie.class.getSimpleName(), movie.getId());
         appNavigator.navigateToMovieDetails(args);
     }
 }

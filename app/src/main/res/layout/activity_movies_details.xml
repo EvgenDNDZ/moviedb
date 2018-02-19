@@ -10,28 +10,38 @@
     </data>
 
     <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        style="@style/FullScreenView">
 
-        <LinearLayout
-            style="@style/VerticalLinearLayout.FullScreen"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ScrollView
+            style="@style/FullScreenView">
+            <LinearLayout
+                style="@style/VerticalLinearLayout.FullScreen">
+
+                <android.support.v7.widget.AppCompatImageView
+                    style="@style/MoviesDetails.MoviesItemImage"
+                    app:imageUrl="@{vm.movieDetails.backdropPath}"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/MoviesDetails.MoviesItemTitle"
+                    android:text="@{vm.movieDetails.title}"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/MoviesDetails.MoviesItemAdditionalInfo"
+                    android:text="@{vm.movieDetails.briefInfo}"/>
 
 
-        </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/FullScreenView"
             android:background="@android:color/transparent"
             android:gravity="center"
             app:viewVisibility="@{vm.loading}"
             >
 
             <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/WrappedView" />
 
         </RelativeLayout>
 

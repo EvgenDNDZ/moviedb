@@ -13,6 +13,7 @@ android {
         buildConfigField "String", "BASE_URL", '"http://api.themoviedb.org/3/"'
         buildConfigField "String", "THEMOVIEDB_API_KEY", '"d84eed920d17ea08fe8bc112a2dbd1f6"'
         buildConfigField "String", "BASE_URL_THUMBNAIL_IMG", '"https://image.tmdb.org/t/p/w150"'
+        buildConfigField "String", "BASE_URL_IMG", '"https://image.tmdb.org/t/p/w300"'
     }
     dataBinding {
         enabled = true
