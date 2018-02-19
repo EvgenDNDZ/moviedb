@@ -4,11 +4,9 @@
     <style name="MoviesDetails">
     </style>
 
-
     <style name="MoviesDetails.MoviesItemImage">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/movies_datails_bg_height</item>
-        <item name="android:layout_marginTop">@dimen/default_padding</item>
+        <item name="android:layout_height">@dimen/movies_details_bg_height</item>
         <item name="android:layout_marginBottom">@dimen/default_padding</item>
         <item name="android:scaleType">centerInside</item>
     </style>

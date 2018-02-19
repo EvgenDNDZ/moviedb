@@ -48,7 +48,7 @@ public class BindingAdapters {
     public static void setDate(TextView view, String date, String pattern) {
 
         if (!TextUtils.isEmpty(date)) {
-            view.setText(DateUtils.getDateAsString(DateUtils.getDateFromString(date,DateUtils.fullFormat), pattern));
+            view.setText(DateUtils.getDateAsString(DateUtils.getDateFromString(date, DateUtils.fullFormat), pattern));
         } else {
             view.setVisibility(View.GONE);
         }

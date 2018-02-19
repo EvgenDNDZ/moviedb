@@ -3,7 +3,7 @@ package com.railsreactor.moviedbapp.di;
 
 import com.google.gson.Gson;
 import com.railsreactor.moviedbapp.BuildConfig;
-import com.railsreactor.moviedbapp.data.net.MovieDBApi;
+import com.railsreactor.moviedbapp.data.net.MovieDbApi;
 import com.railsreactor.moviedbapp.domain.executor.UseCaseExecutor;
 
 import java.util.concurrent.TimeUnit;
@@ -66,7 +66,7 @@ public class NetModule {
     }
 
     @Provides
-    MovieDBApi provideMovieDBApi(Retrofit retrofit) {
-        return retrofit.create(MovieDBApi.class);
+    MovieDbApi provideMovieDBApi(Retrofit retrofit) {
+        return retrofit.create(MovieDbApi.class);
     }
 }

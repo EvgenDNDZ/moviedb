@@ -1,9 +1,9 @@
 package com.railsreactor.moviedbapp.data.repository;
 
 import com.railsreactor.moviedbapp.BuildConfig;
-import com.railsreactor.moviedbapp.data.net.MovieDBApi;
-import com.railsreactor.moviedbapp.data.net.response.MoviesListResponse;
-import com.railsreactor.moviedbapp.domain.models.MovieDetails;
+import com.railsreactor.moviedbapp.data.net.MovieDbApi;
+import com.railsreactor.moviedbapp.data.net.response.PaginatedListResponse;
+import com.railsreactor.moviedbapp.domain.models.Movie;
 import com.railsreactor.moviedbapp.domain.repository.MovieRepository;
 
 import java.util.Locale;
@@ -20,22 +20,23 @@ import io.reactivex.Single;
 @Singleton
 public class MovieDataRepository implements MovieRepository {
 
-    private final MovieDBApi movieDBApi;
+    private final MovieDbApi movieDBApi;
     private final Locale locale;
 
     @Inject
-    public MovieDataRepository(MovieDBApi movieDBApi, Locale locale) {
+    public MovieDataRepository(MovieDbApi movieDBApi, Locale locale) {
         this.movieDBApi = movieDBApi;
         this.locale = locale;
     }
 
     @Override
-    public Single<MoviesListResponse> getMoviesListByPage(int pageIndex) {
-        return this.movieDBApi.getMoviesListByPage(BuildConfig.THEMOVIEDB_API_KEY, locale.getDisplayLanguage(), pageIndex);
+    public Single<PaginatedListResponse<Movie>> getMoviesListByPage(int pageIndex) {
+        return this.movieDBApi.getMoviesListByPage(BuildConfig.THEMOVIEDB_API_KEY, locale.getDisplayLanguage(), pageIndex, null);
     }
 
     @Override
-    public Single<MovieDetails> getMoviesDetails(int id) {
-        return this.movieDBApi.getMovieDetailsById(id, BuildConfig.THEMOVIEDB_API_KEY, locale.getDisplayLanguage());
+    public Single<Movie> getMoviesDetails(int id) {
+        return this.movieDBApi.getMovieDetailsById(id, BuildConfig.THEMOVIEDB_API_KEY, locale.getDisplayLanguage(), null);
     }
 }
+

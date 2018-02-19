@@ -18,8 +18,10 @@ public class MoviesDetailsActivity extends MvvmLoadingActivity<ActivityMoviesDet
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setAndBindContentView(this, savedInstanceState, R.layout.activity_movies_details);
+
         initToolbar();
-        if(savedInstanceState == null && getIntent().hasExtra(Navigator.EXTRA_ARG)){
+
+        if (savedInstanceState == null && getIntent().hasExtra(Navigator.EXTRA_ARG)) {
             viewModel.updateMoviesDetails(getIntent().getBundleExtra(Navigator.EXTRA_ARG).getInt(Movie.class.getSimpleName()));
         }
     }

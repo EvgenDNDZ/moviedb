@@ -2,7 +2,7 @@ package com.railsreactor.moviedbapp.di;
 
 import android.app.Application;
 
-import com.railsreactor.moviedbapp.MovieDBApp;
+import com.railsreactor.moviedbapp.MovieDbApp;
 
 import javax.inject.Singleton;
 
@@ -27,5 +27,5 @@ public interface AppComponent {
         AppComponent build();
     }
 
-    void inject(MovieDBApp movieDBApp);
+    void inject(MovieDbApp movieDbApp);
 }

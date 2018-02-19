@@ -11,14 +11,13 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import dagger.android.HasServiceInjector;
 import timber.log.Timber;
 
 /**
  * @author Evgeny Kubay on 2/17/18.
  */
 
-public class MovieDBApp extends Application implements HasActivityInjector{
+public class MovieDbApp extends Application implements HasActivityInjector{
 
     private final int MIN_CACHE_SIZE_IN_MEGABYTES = 75;
     private final int MAX_CACHE_SIZE_IN_MEGABYTES = 500;

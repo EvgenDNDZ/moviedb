@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-import com.railsreactor.moviedbapp.MovieDBApp;
+import com.railsreactor.moviedbapp.MovieDbApp;
 
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
@@ -20,15 +20,15 @@ public class AppInjector {
 
     private AppInjector(){}
 
-    public static void init(MovieDBApp movieDBApp) {
+    public static void init(MovieDbApp movieDbApp) {
         DaggerAppComponent
                 .builder()
-                .application(movieDBApp)
+                .application(movieDbApp)
                 .build()
-                .inject(movieDBApp);
+                .inject(movieDbApp);
 
 
-        movieDBApp.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+        movieDbApp.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 handleActivity(activity);

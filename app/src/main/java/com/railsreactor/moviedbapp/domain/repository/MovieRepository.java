@@ -1,7 +1,7 @@
 package com.railsreactor.moviedbapp.domain.repository;
 
-import com.railsreactor.moviedbapp.data.net.response.MoviesListResponse;
-import com.railsreactor.moviedbapp.domain.models.MovieDetails;
+import com.railsreactor.moviedbapp.data.net.response.PaginatedListResponse;
+import com.railsreactor.moviedbapp.domain.models.Movie;
 
 import io.reactivex.Single;
 
@@ -11,6 +11,6 @@ import io.reactivex.Single;
 
 public interface MovieRepository {
 
-    Single<MoviesListResponse> getMoviesListByPage(int pageIndex);
-    Single<MovieDetails> getMoviesDetails(int id);
+    Single<PaginatedListResponse<Movie>> getMoviesListByPage(int pageIndex);
+    Single<Movie> getMoviesDetails(int id);
 }

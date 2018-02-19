@@ -1,4 +1,4 @@
-package com.railsreactor.moviedbapp.data.exeptions;
+package com.railsreactor.moviedbapp.data.exceptions;
 
 import android.app.Application;
 import android.content.Context;

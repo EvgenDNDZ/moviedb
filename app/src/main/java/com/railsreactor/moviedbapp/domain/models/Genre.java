@@ -2,27 +2,27 @@ package com.railsreactor.moviedbapp.domain.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class GenresItem{
-
-	@SerializedName("name")
-	private String name;
+public class Genre {
 
 	@SerializedName("id")
 	private int id;
 
-	public void setName(String name){
+	@SerializedName("name")
+	private String name;
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getName(){
+	public String getName() {
 		return name;
 	}
 
-	public void setId(int id){
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public int getId(){
+	public int getId() {
 		return id;
 	}
 }

@@ -4,9 +4,9 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.databinding.ObservableField;
 
-import com.railsreactor.moviedbapp.data.exeptions.ErrorMessageFactory;
+import com.railsreactor.moviedbapp.data.exceptions.ErrorMessageFactory;
 import com.railsreactor.moviedbapp.domain.interactor.GetMoviesDetailsUseCase;
-import com.railsreactor.moviedbapp.domain.models.MovieDetails;
+import com.railsreactor.moviedbapp.domain.models.Movie;
 import com.railsreactor.moviedbapp.presentation.base.BaseLoadingActivityViewModel;
 
 import javax.inject.Inject;
@@ -21,14 +21,14 @@ public class MoviesDetailsActivityViewModel extends BaseLoadingActivityViewModel
 
     @Inject GetMoviesDetailsUseCase getMoviesDetailsUseCase;
 
-    private final ObservableField<MovieDetails> movieDetails = new ObservableField<>();
+    private final ObservableField<Movie> movieDetails = new ObservableField<>();
 
     @Inject
     public MoviesDetailsActivityViewModel(ErrorMessageFactory errorMessageFactory) {
         super(errorMessageFactory);
     }
 
-    public ObservableField<MovieDetails> getMovieDetails() {
+    public ObservableField<Movie> getMovieDetails() {
         return movieDetails;
     }
 
@@ -43,8 +43,8 @@ public class MoviesDetailsActivityViewModel extends BaseLoadingActivityViewModel
 
     private void loadMoviesDetailsAsync(int id){
         this.getMoviesDetailsUseCase.execute(id,
-                mDetails -> {
-                    getMovieDetails().set(mDetails);
+                movie -> {
+                    getMovieDetails().set(movie);
                     onCompleteLoading();
                 },
                 this::onFailLoading);

@@ -3,31 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="vm"
             type="com.railsreactor.moviedbapp.presentation.details.MoviesDetailsActivityViewModel" />
-        <import type="android.support.v7.widget.LinearLayoutManager"/>
+
+        <import type="android.support.v7.widget.LinearLayoutManager" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
-        style="@style/FullScreenView">
+    <android.support.design.widget.CoordinatorLayout style="@style/FullScreenView">
 
-        <ScrollView
-            style="@style/FullScreenView">
-            <LinearLayout
-                style="@style/VerticalLinearLayout.FullScreen">
+        <ScrollView style="@style/FullScreenView">
+
+            <LinearLayout style="@style/VerticalLinearLayout.FullScreen">
 
                 <android.support.v7.widget.AppCompatImageView
                     style="@style/MoviesDetails.MoviesItemImage"
-                    app:imageUrl="@{vm.movieDetails.backdropPath}"/>
+                    android:fitsSystemWindows="true"
+                    app:imageUrl="@{vm.movieDetails.backdropPath}" />
 
                 <android.support.v7.widget.AppCompatTextView
                     style="@style/MoviesDetails.MoviesItemTitle"
-                    android:text="@{vm.movieDetails.title}"/>
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@{vm.movieDetails.title}" />
 
                 <android.support.v7.widget.AppCompatTextView
                     style="@style/MoviesDetails.MoviesItemAdditionalInfo"
-                    android:text="@{vm.movieDetails.briefInfo}"/>
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@{vm.movieDetails.briefInfo}" />
 
 
             </LinearLayout>
@@ -37,11 +44,9 @@
             style="@style/FullScreenView"
             android:background="@android:color/transparent"
             android:gravity="center"
-            app:viewVisibility="@{vm.loading}"
-            >
+            app:viewVisibility="@{vm.loading}">
 
-            <ProgressBar
-                style="@style/WrappedView" />
+            <ProgressBar style="@style/WrappedView" />
 
         </RelativeLayout>
 

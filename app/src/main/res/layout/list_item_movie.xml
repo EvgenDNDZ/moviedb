@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="model"
+            type="com.railsreactor.moviedbapp.domain.models.Movie" />
+
+        <import type="android.support.v7.widget.LinearLayoutManager" />
+
+        <import type="com.railsreactor.moviedbapp.utils.DateUtils" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        style="@style/MovieList.MoviesItemInfoHolder">
+
+        <LinearLayout
+            style="@style/HorizontalLinearLayout"
+            android:padding="@dimen/movies_item_info_container_padding">
+
+            <android.support.v7.widget.AppCompatImageView
+                style="@style/MovieList.MoviesItemImage"
+                app:imageUrl="@{model.thumbnailImage}" />
+
+            <LinearLayout
+                style="@style/VerticalLinearLayout.FullScreen"
+                android:layout_marginStart="@dimen/default_padding"
+                android:gravity="center_vertical"
+                android:padding="@dimen/default_padding_x2">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/MovieList.MoviesItemTitle"
+                    android:text="@{model.combinedTitle}" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/MovieList.MoviesItemAdditionalInfo"
+                    app:date="@{model.releaseDate}"
+                    app:pattern="@{DateUtils.dateWithMonthName}" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/MovieList.MoviesItemAdditionalInfo"
+                    android:layout_marginStart="@dimen/default_padding"
+                    android:drawablePadding="@dimen/small_padding"
+                    android:drawableStart="@drawable/ic_show_chart"
+                    android:text='@{String.format("%.2f", model.popularity)}' />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/MovieList.MoviesItemAdditionalInfo"
+                    android:layout_marginStart="@dimen/default_padding"
+                    android:drawablePadding="@dimen/small_padding"
+                    android:drawableStart="@drawable/ic_thumbs_up_down"
+                    android:gravity="center_vertical"
+                    android:text="@{String.valueOf(model.voteCount)}" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

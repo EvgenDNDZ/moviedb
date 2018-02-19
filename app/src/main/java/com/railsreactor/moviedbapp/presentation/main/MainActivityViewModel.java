@@ -5,7 +5,7 @@ import android.arch.lifecycle.OnLifecycleEvent;
 import android.databinding.ObservableBoolean;
 import android.os.Bundle;
 
-import com.railsreactor.moviedbapp.data.exeptions.ErrorMessageFactory;
+import com.railsreactor.moviedbapp.data.exceptions.ErrorMessageFactory;
 import com.railsreactor.moviedbapp.domain.interactor.GetMoviesListUseCase;
 import com.railsreactor.moviedbapp.domain.models.Movie;
 import com.railsreactor.moviedbapp.presentation.base.AppNavigator;
@@ -24,10 +24,13 @@ public class MainActivityViewModel extends BaseLoadingActivityViewModel implemen
 
     @Inject MoviesListAdapter moviesListAdapter;
     @Inject GetMoviesListUseCase getMoviesListUseCase;
-    public int currentPage = 0;
-    public int totalPages = 0;
-    public boolean isLastPage = false;
+
     AppNavigator appNavigator;
+
+    private int currentPage = 0;
+    int totalPages = 0;
+    boolean isLastPage = false;
+
     private final ObservableBoolean isUpdating = new ObservableBoolean();
 
     @Inject
@@ -49,10 +52,11 @@ public class MainActivityViewModel extends BaseLoadingActivityViewModel implemen
         startLoading(this::updateMoviesList, true);
     }
 
-    public void updateMoviesList(){
+    public void updateMoviesList() {
         updateMoviesListAsync(++currentPage);
     }
-    private void updateMoviesListAsync(int pageIndex){
+
+    private void updateMoviesListAsync(int pageIndex) {
         this.getMoviesListUseCase.execute(pageIndex,
                 moviesListResponses -> {
                     getIsUpdating().set(false);
